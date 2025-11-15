@@ -61,7 +61,7 @@ I want to containerize my Node.js apps.
 At the end of each session, Claude will give you a continuation prompt. Copy and paste it in a new chat:
 
 ```
-Continue my [Topic] learning program.
+Use the learn-tech skill to continue my [Topic] learning program.
 Use filesystem MCP to:
 1. Read /path/to/project/docs/PROGRESS.txt
 2. Find relevant MODULE_X_PLAN.md if needed
@@ -69,6 +69,8 @@ Use filesystem MCP to:
 
 Project location: /path/to/project
 ```
+
+**Important:** The prompt must include "Use the learn-tech skill" to ensure Claude activates the skill in the new session and follows all the teaching patterns.
 
 ## What Gets Created
 

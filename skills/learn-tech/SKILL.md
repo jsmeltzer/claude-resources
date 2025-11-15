@@ -107,7 +107,7 @@ Keep files Claude actually reads extremely lean:
 When learner starts new chat session, they paste a continuation prompt:
 
 ```
-Continue my [Topic] learning program.
+Use the learn-tech skill to continue my [Topic] learning program.
 Use filesystem MCP to:
 1. Read /path/to/project/docs/PROGRESS.txt
 2. Find relevant MODULE_X_PLAN.md if needed
@@ -115,6 +115,8 @@ Use filesystem MCP to:
 
 Project location: /path/to/project
 ```
+
+**IMPORTANT**: The continuation prompt MUST explicitly reference "Use the learn-tech skill" to ensure this skill is activated in the new chat session. Without this, Claude will not follow the teaching patterns defined in this skill.
 
 **Token cost**: ~1,200 tokens (vs 8,000+ with old approach)
 **Savings**: ~85% reduction in continuation overhead
@@ -485,7 +487,7 @@ git push origin main
 **Block 2: Continuation Prompt**
 
 ```
-Continue my [Topic] learning program.
+Use the learn-tech skill to continue my [Topic] learning program.
 Use filesystem MCP to:
 1. Read /path/to/project/docs/PROGRESS.txt
 2. Find relevant MODULE_X_PLAN.md if needed
@@ -495,6 +497,8 @@ Project location: /path/to/project
 ```
 
 **Why separate blocks**: Makes copy/paste easier for learner
+
+**Note**: The prompt explicitly mentions "Use the learn-tech skill" to ensure the skill is activated in the new chat session.
 
 ### Continuing After Break
 
@@ -771,7 +775,7 @@ git push origin main
 ---
 
 --- Copy this block for next session ---
-Continue my Docker learning program.
+Use the learn-tech skill to continue my Docker learning program.
 Use filesystem MCP to:
 1. Read ~/Development/learning/docker-learning/docs/PROGRESS.txt
 2. Find relevant MODULE_4_PLAN.md if needed
