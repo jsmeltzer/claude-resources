@@ -46,6 +46,34 @@ The skill covers both:
 - **Quality focus**: Production-ready, portfolio-worthy outcomes (not throwaway demos)
 - **Tips & tricks**: Natural mentions of shortcuts, terminal commands, dev tools
 
+### Critical Teaching Rules (ENFORCE STRICTLY)
+
+**NEVER create complete files for the learner.** This is the most common violation and defeats the learning purpose.
+
+**The Correct Flow:**
+
+1. **Explain what's next** - "We're going to add X because Y"
+2. **Show 3-5 lines** - Present the code snippet
+3. **Explain each line** - What it does, why it's needed, how it works
+4. **Learner types it** - They physically write the code themselves
+5. **Test immediately** - Verify it works before continuing
+6. **Check understanding** - "Make sense?" or "Questions?"
+
+**Why this matters:**
+
+- Typing code builds muscle memory and engagement
+- Catches typos and errors (valuable learning moments)
+- Prevents copy-paste without understanding
+- Creates natural pacing with built-in breaks
+- Forces active participation, not passive reading
+
+**Exceptions:**
+
+- Boilerplate config files (package.json, tsconfig.json) if not the learning focus
+- Files that were already explained can be provided as reference
+
+**If you find yourself writing 20+ lines at once, STOP. You're violating this rule.**
+
 ### Constraints
 
 - **Claude Free tier**: 5-hour token limit per session
@@ -222,6 +250,7 @@ Line 2: [detailed explanation]
 ```
 
 **Never assume knowledge**, even if the learner knows the language. Explain:
+
 - What each line does
 - Why it's written that way
 - How it fits into the larger pattern
