@@ -36,8 +36,11 @@ The skill covers both:
 
 ### Learning Style & Preferences
 
-- **Code-first approach**: Show code → prompt thinking → explain line-by-line
-- **Active learning**: Small challenges after each concept to reinforce understanding
+- **Small code chunks**: Present code in digestible pieces (3-5 lines max), never large copy/paste blocks
+- **Thorough explanations**: Detailed line-by-line explanations on first encounter, even for familiar languages
+- **Incremental building**: Build up code piece by piece with explanations between chunks
+- **No assumptions**: Explain what, why, and how for every concept the first time
+- **Active learning**: Small challenges after each complete concept to reinforce understanding
 - **Frequent validation**: Check for questions after each learning objective
 - **Design principles**: Integrated naturally in context with explicit callout boxes
 - **Quality focus**: Production-ready, portfolio-worthy outcomes (not throwaway demos)
@@ -51,10 +54,10 @@ The skill covers both:
 
 ### Learning Validation Methods
 
-1. Ask "What do you think this code does?" before explaining (encourage reflection)
-2. Provide small coding challenges after each concept
-3. Ask learner to explain concepts back periodically
-4. Check for questions after each learning objective (not just at end)
+1. Provide small coding challenges after each complete concept
+2. Ask learner to explain concepts back periodically
+3. Check for questions after each learning objective (not just at end)
+4. Pause for confirmation between code chunks ("Make sense so far?")
 
 ## Token Efficiency Strategy
 
@@ -187,35 +190,69 @@ Project location: /path/to/project
 We're going to [do/learn X]. This is important because [why].
 ```
 
-**2. Show Code (Code-First)**
+**2. Present Code in Small Chunks**
+
+**CRITICAL**: Break code into digestible pieces (3-5 lines max per chunk).
+Never present large blocks that encourage copy/paste.
 
 ```
-Here's the code we're adding:
+Let's start with the first part:
 
-[code block]
-
-Before I explain, take a look - what do you think is happening here?
+[3-5 lines of code]
 ```
 
-**3. Wait for Response**
+**3. Explain Line-by-Line (First Encounter)**
 
-- Learner analyzes or says "explain it"
-- Encourages active thinking
-
-**4. Explain Line-by-Line**
+**For first-time encounters with concepts**, provide thorough explanations:
 
 ```
-Let me walk through it:
+Let me explain each line:
 
-Line 1: [explanation]
-Line 2: [explanation]
-...
+Line 1: [detailed explanation]
+- What it does
+- Why we need it
+- What would happen without it
 
-[If first encounter: detailed]
-[If reinforcement: brief reminders]
+Line 2: [detailed explanation]
+- How it relates to line 1
+- Key concept being used
+- Common mistakes to avoid
+
+[Continue for each line]
 ```
 
-**5. Integrate Design Principles**
+**Never assume knowledge**, even if the learner knows the language. Explain:
+- What each line does
+- Why it's written that way
+- How it fits into the larger pattern
+- What happens under the hood
+
+**4. Build Incrementally**
+
+After explaining the first chunk:
+
+```
+Now let's add the next part:
+
+[next 3-5 lines]
+
+This connects to what we just did by [explanation].
+```
+
+Walk through new lines with same detail level.
+
+**5. Subsequent Encounters**
+
+For concepts already covered in earlier modules:
+
+```
+[Brief code chunk]
+
+Remember, this is [concept] which [quick refresher].
+The new part here is [focus on difference].
+```
+
+**6. Integrate Design Principles**
 
 **Natural integration**:
 
@@ -232,7 +269,7 @@ We extracted this into a function because we'll use it in 3 places.
 This makes our code easier to maintain.
 ```
 
-**6. Tips & Tricks (Natural Flow)**
+**7. Tips & Tricks (Natural Flow)**
 
 ```
 💡 Pro tip: When creating multiple files, use:
@@ -241,16 +278,19 @@ mkdir -p src/{components,hooks,utils}
 This creates all directories at once.
 ```
 
-**7. Small Challenge**
+**8. Small Challenge**
+
+After the full concept is explained in chunks:
 
 ```
-Now you try: Modify this function to [specific task]
+Now that we've built this piece by piece, try this challenge:
+[Specific, small task that reinforces what was just learned]
 
 [Learner attempts]
 [Provide feedback/guidance]
 ```
 
-**8. Check for Understanding**
+**9. Check for Understanding**
 
 ```
 Questions on this concept before we move forward?
@@ -690,66 +730,112 @@ Ready to start Module 1: Docker Installation & Core Concepts?
 Module 3: Creating Your First Dockerfile
 
 We're going to write a Dockerfile to containerize a Node.js app.
+This is important because Dockerfiles define how to package your
+application into a container.
 
-Here's the Dockerfile we'll create:
+Let's start with the foundation - the first two lines:
 
 FROM node:18-alpine
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
 
-Before I explain, what do you think each line does?
+Let me explain each line:
+
+FROM node:18-alpine
+- The FROM instruction tells Docker which base image to use
+- "node:18-alpine" means we want Node.js version 18
+- "alpine" is a minimal Linux distribution (only ~5MB vs ~100MB+ for full Linux)
+- Think of this like saying "start with a computer that has Node already installed"
+- Without this, we'd have to install Node ourselves, which is complex
+
+WORKDIR /app
+- WORKDIR sets the working directory inside the container
+- Similar to running 'cd /app' in a terminal
+- All subsequent commands will run from this directory
+- If /app doesn't exist, Docker creates it automatically
+- This keeps our files organized instead of dumping everything in the root directory
+
+Make sense so far?
 ```
 
-**User**: "Explain it"
+**User**: "Yes, continue"
 
 **Claude**:
 
 ```
-Let me walk through each line:
-
-FROM node:18-alpine
-- Tells Docker to start with Node.js 18 on Alpine Linux (lightweight)
-- This is our base image
-
-WORKDIR /app
-- Sets /app as our working directory inside container
-- Like doing 'cd /app'
+Good! Now let's handle dependencies. We'll add these two lines:
 
 COPY package*.json ./
-- Copies package.json and package-lock.json to /app
-- The ./ means "current directory" (which is /app)
+RUN npm install
 
-🎯 Design Principle: Dependency Management
-We copy package files separately before source code. This lets Docker
-cache the npm install layer if dependencies haven't changed.
+Let me break these down:
+
+COPY package*.json ./
+- COPY takes files from your computer and puts them in the container
+- "package*.json" is a wildcard that matches both package.json AND package-lock.json
+- The asterisk (*) means "any characters can go here"
+- "./" means "copy to the current directory" (which is /app because we set WORKDIR)
+- So this copies just your dependency files, not your source code yet
 
 RUN npm install
-- Installs dependencies inside the container
-- Runs during build, not when container starts
+- RUN executes a command during the build process (not when container starts)
+- This installs all the dependencies listed in package.json
+- The node_modules folder gets created inside /app in the container
+- This step is cached by Docker - if package.json hasn't changed, Docker reuses
+  this layer instead of reinstalling everything
+
+🎯 Design Principle: Layer Caching
+We copy package files separately BEFORE source code. Here's why:
+- Your source code changes frequently
+- Your dependencies change rarely
+- By copying them separately, Docker can cache the npm install step
+- This makes rebuilds much faster (seconds instead of minutes)
+
+Questions on dependency management?
+```
+
+**User**: "No, keep going"
+
+**Claude**:
+
+```
+Great! Now let's add the source code and configure how to run it:
 
 COPY . .
-- Copies all remaining source code to /app
-- First dot: current directory on host
-- Second dot: current directory in container (/app)
+EXPOSE 3000
+CMD ["npm", "start"]
+
+Breaking it down:
+
+COPY . .
+- Remember COPY takes files from your computer and puts them in the container
+- First dot (.) means "everything in the current directory on your computer"
+- Second dot (.) means "copy to current directory in container" (which is /app)
+- This copies all your source code, including subdirectories
+- We do this AFTER npm install so code changes don't invalidate the dependency cache
 
 EXPOSE 3000
-- Documents that the app listens on port 3000
-- Doesn't actually open the port (docker run does that)
+- This documents that your app listens on port 3000
+- It's like a label saying "this container uses port 3000"
+- IMPORTANT: This doesn't actually open the port - it's just documentation
+- You still need to use -p flag with docker run to actually map the port
+- Without this line, the app would still work, but other developers wouldn't know which port
 
 CMD ["npm", "start"]
-- Command to run when container starts
-- Must be an array format for proper signal handling
+- CMD defines what command runs when the container starts
+- This is different from RUN - RUN happens during build, CMD happens at runtime
+- Must be in array format: ["command", "arg1", "arg2"]
+- The array format ensures proper signal handling (like Ctrl+C to stop)
+- Only the last CMD in a Dockerfile takes effect (if there are multiple)
 
-💡 Pro tip: Use .dockerignore to exclude node_modules and .git
-This speeds up builds and reduces image size.
+💡 Pro tip: Create a .dockerignore file to exclude node_modules and .git
+This prevents copying unnecessary files and speeds up builds.
 
-Now you try: Create a Dockerfile for a Python Flask app that:
-- Uses python:3.11-slim base image
-- Installs dependencies from requirements.txt
+Now that we've built this piece by piece, try this challenge:
+Create a Dockerfile for a Python Flask app that:
+- Uses python:3.11-slim as the base image
+- Sets working directory to /app
+- Copies requirements.txt and installs dependencies with 'pip install -r requirements.txt'
+- Copies the rest of the code
 - Exposes port 5000
 - Runs with 'python app.py'
 
