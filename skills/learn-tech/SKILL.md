@@ -1,10 +1,10 @@
 ---
 name: learn-tech
-description: Creates and teaches structured software engineering learning programs with token efficiency, break-friendly sessions, and deep understanding through code-first learning
+description: Creates and teaches structured software engineering learning programs with token efficiency, break-friendly sessions, and deep understanding through architecture-first teaching
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   author: J Smeltzer
-  last_updated: 2025-11-14
+  last_updated: 2025-12-06
 ---
 
 # learn-tech Skill
@@ -36,11 +36,14 @@ The skill covers both:
 
 ### Learning Style & Preferences
 
-- **Small code chunks**: Present code in digestible pieces (3-5 lines max), never large copy/paste blocks
-- **Thorough explanations**: Detailed line-by-line explanations on first encounter, even for familiar languages
-- **Incremental building**: Build up code piece by piece with explanations between chunks
-- **No assumptions**: Explain what, why, and how for every concept the first time
-- **Active learning**: Small challenges after each complete concept to reinforce understanding
+- **Architecture-first**: Always explain the complete system/concept/flow BEFORE writing any code
+- **Big picture understanding**: Show how all pieces fit together and why they're needed upfront
+- **Thorough explanations**: Explain what each code chunk does, why it's needed, the syntax/patterns used, and how it connects to the bigger picture
+- **No assumptions**: Don't assume knowledge - explain syntax and patterns even for familiar languages
+- **Design decisions**: Explain trade-offs and why specific approaches were chosen
+- **Understanding over speed**: Focus on deep comprehension rather than rushing to complete code
+- **Active learning**: Challenge learner to implement when the pattern is clear (not copy/paste)
+- **Incremental implementation**: After architecture is clear, implement piece by piece with small chunks (3-5 lines max)
 - **Frequent validation**: Check for questions after each learning objective
 - **Design principles**: Integrated naturally in context with explicit callout boxes
 - **Quality focus**: Production-ready, portfolio-worthy outcomes (not throwaway demos)
@@ -52,20 +55,24 @@ The skill covers both:
 
 **The Correct Flow:**
 
-1. **Explain what's next** - "We're going to add X because Y"
-2. **Show 3-5 lines** - Present the code snippet
-3. **Explain each line** - What it does, why it's needed, how it works
-4. **Learner types it** - They physically write the code themselves
-5. **Test immediately** - Verify it works before continuing
-6. **Check understanding** - "Make sense?" or "Questions?"
+1. **Explain architecture first** - "Here's how this system works and why we're building it this way"
+2. **Explain what's next** - "We're going to add X because Y and it fits into the system like this"
+3. **Show 3-5 lines** - Present the code snippet only after context is established
+4. **Explain thoroughly** - What it does, why it's needed, how it works, syntax/patterns used, design decisions
+5. **Learner types it** - They physically write the code themselves
+6. **Test immediately** - Verify it works before continuing
+7. **Challenge learner** - When pattern is clear, have them implement the next piece
+8. **Check understanding** - "Make sense?" or "Questions?"
 
 **Why this matters:**
 
+- Architecture-first prevents copy-paste without understanding
 - Typing code builds muscle memory and engagement
 - Catches typos and errors (valuable learning moments)
-- Prevents copy-paste without understanding
+- Challenging learner to implement reinforces patterns
 - Creates natural pacing with built-in breaks
 - Forces active participation, not passive reading
+- Understanding over speed leads to deeper retention
 
 **Exceptions:**
 
@@ -210,78 +217,131 @@ Project location: /path/to/project
 
 ## Teaching Flow Pattern
 
+### Architecture-First Teaching Style
+
+**CRITICAL PRINCIPLE**: Always explain the complete system/concept/flow BEFORE writing any code. Understanding comes before implementation.
+
 ### For Each Learning Objective
 
-**1. Introduce Concept**
+**1. Introduce the Concept and Its Purpose**
 
 ```
 We're going to [do/learn X]. This is important because [why].
 ```
 
-**2. Present Code in Small Chunks**
+**2. Explain the Complete Architecture/System FIRST**
 
-**CRITICAL**: Break code into digestible pieces (3-5 lines max per chunk).
-Never present large blocks that encourage copy/paste.
+Before showing ANY code, explain:
 
 ```
-Let's start with the first part:
+Here's how this works at a high level:
+
+1. [Component/piece A] handles [responsibility]
+2. [Component/piece B] manages [responsibility]
+3. They connect like this: [flow explanation]
+
+The reason we structure it this way is [design rationale].
+```
+
+**Provide context**:
+- What problem are we solving?
+- What are the main pieces/components?
+- How do they fit together?
+- Why this architecture vs alternatives?
+- What trade-offs did we make?
+
+**Use diagrams or flow descriptions**:
+
+```
+Flow:
+User action → Event handler → Data validation → API call → State update → UI re-render
+
+Each step has a specific job, which prevents [common problem].
+```
+
+**3. Explain Design Decisions and Trade-offs**
+
+```
+We're choosing [approach X] over [approach Y] because:
+- [Benefit 1]
+- [Benefit 2]
+
+The trade-off is [downside], but that's acceptable because [reason].
+```
+
+**4. NOW Implement Incrementally with Small Chunks**
+
+Only after architecture is clear, start implementing:
+
+```
+Now that you understand the overall flow, let's implement the first piece: [component/function name]
 
 [3-5 lines of code]
 ```
 
-**3. Explain Line-by-Line (First Encounter)**
+**CRITICAL**: Break code into digestible pieces (3-5 lines max per chunk).
+Never present large blocks that encourage copy/paste.
 
-**For first-time encounters with concepts**, provide thorough explanations:
+**5. Explain Each Code Chunk Thoroughly**
 
+For each chunk, explain:
+
+**a) What it does and why it's needed**:
 ```
-Let me explain each line:
-
-Line 1: [detailed explanation]
-- What it does
-- Why we need it
-- What would happen without it
-
-Line 2: [detailed explanation]
-- How it relates to line 1
-- Key concept being used
-- Common mistakes to avoid
-
-[Continue for each line]
+This function validates user input because we need to ensure data integrity before saving.
 ```
 
-**Never assume knowledge**, even if the learner knows the language. Explain:
+**b) The syntax/patterns used** (don't assume knowledge):
+```
+The `async` keyword means this function will handle asynchronous operations.
+We use `await` to pause execution until the promise resolves.
+This is cleaner than using `.then()` chains.
+```
 
-- What each line does
-- Why it's written that way
-- How it fits into the larger pattern
-- What happens under the hood
+**c) How it connects to the bigger picture**:
+```
+Remember, this validation step is the second part of our flow:
+User action → [WE ARE HERE: Data validation] → API call → State update
+```
 
-**4. Build Incrementally**
+**d) Design decisions and trade-offs**:
+```
+We're validating on both client and server side. Client-side gives immediate feedback,
+server-side ensures security. The trade-off is a bit of code duplication, but it's worth it.
+```
+
+**6. Build Up Code Piece by Piece**
 
 After explaining the first chunk:
 
 ```
-Now let's add the next part:
+Now let's add the next part - the API call:
 
 [next 3-5 lines]
 
-This connects to what we just did by [explanation].
+Notice how this connects to the validation we just wrote.
+If validation passes, we proceed to the API call. Otherwise, we return early with an error.
 ```
 
 Walk through new lines with same detail level.
 
-**5. Subsequent Encounters**
+**7. Challenge Learner to Implement**
 
-For concepts already covered in earlier modules:
+When the pattern is clear, don't provide code - challenge the learner:
 
 ```
-[Brief code chunk]
+Now that you understand the pattern (validate → call API → handle response),
+try implementing the error handling yourself.
 
-Remember, this is [concept] which [quick refresher].
-The new part here is [focus on difference].
+Consider:
+- What could go wrong?
+- How should we communicate errors to the user?
+- Should we log errors for debugging?
+
+Give it a try, and I'll provide feedback.
 ```
 
-**6. Integrate Design Principles**
+**8. Integrate Design Principles**
 
 **Natural integration**:
 
@@ -298,7 +358,7 @@ We extracted this into a function because we'll use it in 3 places.
 This makes our code easier to maintain.
 ```
 
-**7. Tips & Tricks (Natural Flow)**
+**9. Tips & Tricks (Natural Flow)**
 
 ```
 💡 Pro tip: When creating multiple files, use:
@@ -307,19 +367,7 @@ mkdir -p src/{components,hooks,utils}
 This creates all directories at once.
 ```
 
-**8. Small Challenge**
-
-After the full concept is explained in chunks:
-
-```
-Now that we've built this piece by piece, try this challenge:
-[Specific, small task that reinforces what was just learned]
-
-[Learner attempts]
-[Provide feedback/guidance]
-```
-
-**9. Check for Understanding**
+**10. Check for Understanding**
 
 ```
 Questions on this concept before we move forward?
@@ -329,16 +377,33 @@ Questions on this concept before we move forward?
 
 **First Time Seeing Concept**:
 
-- Full line-by-line explanation
+- Explain complete architecture/flow first
+- Full explanation of syntax/patterns (don't assume knowledge)
 - Why it works this way
+- Design decisions and trade-offs
 - Common pitfalls
-- Related concepts
+- Challenge learner to implement when pattern is clear
 
 **Subsequent Encounters**:
 
 - Brief reminder: "Remember, this is [concept] which [quick refresher]"
-- Focus on what's different/new
+- Focus on what's different/new in this context
 - Less detail unless requested
+- Still challenge learner to apply the pattern
+
+### Focus on Understanding Over Speed
+
+**NEVER rush through code**. It's better to:
+- Take time to explain thoroughly
+- Ensure learner understands the "why" behind each decision
+- Have learner implement pieces themselves
+- Provide detailed feedback on their attempts
+
+**AVOID**:
+- Dumping code without explanation
+- Explaining basics without architectural context
+- Moving forward when learner seems uncertain
+- Providing solutions before learner attempts challenges
 
 ## Best Practices Integration
 
@@ -935,8 +1000,10 @@ A successful learning program produces:
 
 **Learner not understanding concepts**:
 
-- More line-by-line explanation
+- Return to architecture/big picture explanation
 - Add simpler examples
+- More thorough explanation of syntax/patterns (don't assume knowledge)
+- Explain design decisions and why alternatives weren't chosen
 - More frequent validation checks
 - Adjust pace assessment
 
