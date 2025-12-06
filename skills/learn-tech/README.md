@@ -13,28 +13,33 @@ When you say "Create a learning program for [topic]", Claude will:
 
 ### 2. Teaches Throughout
 During all teaching sessions, Claude:
-- Follows your preferred learning style (code-first, challenges, validation)
+- Follows architecture-first teaching (explains system before code)
+- Challenges you to implement when patterns are clear
 - Integrates design principles and best practices
 - Uses token-efficient documentation patterns
 - Enables easy session breaks and continuation
 
 ## Key Features
 
-✅ **Token Efficient** - Minimal documentation overhead (~85% reduction)  
-✅ **Break Friendly** - 1-2 hour modules, clean continuation between sessions  
-✅ **Deep Learning** - Code-first thinking, challenges, frequent validation  
-✅ **Production Quality** - Portfolio-worthy outcomes, best practices throughout  
+✅ **Token Efficient** - Minimal documentation overhead (~85% reduction)
+✅ **Break Friendly** - 1-2 hour modules, clean continuation between sessions
+✅ **Deep Learning** - Architecture-first, active implementation, understanding over speed
+✅ **Production Quality** - Portfolio-worthy outcomes, best practices throughout
 ✅ **Natural Teaching** - Design principles, tips, tricks integrated in flow  
 
 ## Your Learning Preferences (Built Into Skill)
 
-- **Show code first** → Ask what you think → Explain line-by-line
-- **Small challenges** after each concept to reinforce learning
-- **Check for questions** after each objective (not just at module end)
-- **Design principles** taught naturally + explicit callout boxes
-- **Tips & tricks** mentioned naturally (keyboard shortcuts, terminal commands, etc.)
-- **Distinguish first vs subsequent** encounters with concepts
-- **Quality focus** - Production-ready, not throwaway code
+- **Architecture first** → Explain complete system/flow before any code
+- **Big picture understanding** → Show how pieces fit together and why
+- **Thorough explanations** → What/why/how for each code chunk, explain syntax/patterns
+- **Design decisions** → Explain trade-offs and why approaches were chosen
+- **Understanding over speed** → Deep comprehension, not rushing
+- **Active implementation** → Challenge you to implement when pattern is clear
+- **Small code chunks** → 3-5 lines at a time (after architecture explained)
+- **Check for questions** → After each objective (not just at module end)
+- **Design principles** → Taught naturally + explicit callout boxes
+- **Tips & tricks** → Mentioned naturally (keyboard shortcuts, terminal commands, etc.)
+- **Quality focus** → Production-ready, not throwaway code
 
 ## How to Use
 
@@ -130,13 +135,14 @@ Each module: 60-90 minutes (split to Part A/B if >2 hours)
 For each learning objective:
 
 1. **Introduce concept** (why it matters)
-2. **Show code** (before explaining)
-3. **Ask what you think** (encourage reflection)
-4. **Explain line-by-line** (detailed first time, brief after)
-5. **Integrate design principles** (natural + callout boxes)
-6. **Share tips/tricks** (when relevant)
-7. **Assign small challenge** (you write code)
-8. **Check for questions** (after each objective)
+2. **Explain architecture/system FIRST** (complete flow, how pieces fit, design rationale)
+3. **Explain design decisions** (trade-offs, why this approach vs alternatives)
+4. **Then show code in small chunks** (3-5 lines, after context established)
+5. **Explain thoroughly** (what/why/how, syntax/patterns, bigger picture connection)
+6. **Integrate design principles** (natural + callout boxes)
+7. **Share tips/tricks** (when relevant)
+8. **Challenge you to implement** (when pattern is clear, you write code)
+9. **Check for questions** (after each objective)
 
 ## Session Management
 
